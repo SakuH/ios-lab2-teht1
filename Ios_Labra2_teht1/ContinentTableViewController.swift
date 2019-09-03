@@ -20,12 +20,16 @@ class ContinentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("viewDidLoad")
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
      
     }
     override func tableView(_ tableView:UITableView, didSelectRowAt indexPath: IndexPath){
-        
+        let alert = UIAlertController(title: self.continents[indexPath.row].0, message: "Population of " + self.continents[indexPath.row].0 + " is " + String(self.continents[indexPath.row].1), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     
